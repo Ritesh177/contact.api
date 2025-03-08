@@ -16,6 +16,7 @@ This is a backend service for managing contacts using **Spring Boot**, **Java 17
 - **Spring Data JPA**
 - **Maven**
 - **REST API**
+- **MySQL**
 
 ## Getting Started
 
@@ -23,11 +24,11 @@ This is a backend service for managing contacts using **Spring Boot**, **Java 17
 Ensure you have the following installed:
 - Java 17
 - Maven
-- Any database (H2, MySQL, PostgreSQL, etc.)
+- MySQL
 
 ### Clone the Repository
 ```sh
-git clone https://github.com/your-username/contact-service.git
+git -c http.sslVerify=false clone https://github.com/Ritesh177/contact.api.git
 cd contact-service
 ```
 
@@ -44,17 +45,18 @@ cd contact-service
 
 ### API Endpoints
 
-| HTTP Method | Endpoint            | Description                     |
-|------------|--------------------|---------------------------------|
-| GET        | `/contacts`        | Get all contacts               |
-| GET        | `/contacts/{id}`   | Get a contact by ID            |
-| POST       | `/contacts`        | Create a new contact           |
-| PUT        | `/contacts/{id}`   | Update an existing contact     |
-| DELETE     | `/contacts/{id}`   | Delete a contact by ID         |
-| POST       | `/contacts/upload` | Upload a photo for a contact   |
+| HTTP Method | Endpoint          | Description                  |
+|-------------|-------------------|------------------------------|
+| GET         | `/contacts`       | Get all contacts             |
+| GET         | `/contacts/{id}`  | Get a contact by ID          |
+| POST        | `/contacts`       | Create a new contact         |
+| PUT         | `/contacts/{id}`  | Update an existing contact   |
+| DELETE      | `/contacts/{id}`  | Delete a contact by ID       |
+| PUT         | `/contacts/photo` | Upload a photo for a contact |
+| GET         | `/contacts/image/{filename}` | Get the photo of a contact   |
 
 ### Upload Contact Photo
-To upload a contact photo, send a **POST** request to `/contacts/upload` with a multipart file.
+To upload a contact photo, send a **PUT** request to `/contacts/photo` with id and a multipart file.
 
 ## Database Configuration
 You can configure the database in `application.properties`:
